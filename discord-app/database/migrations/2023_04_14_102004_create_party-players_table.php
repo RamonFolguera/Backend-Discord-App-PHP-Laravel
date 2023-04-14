@@ -20,7 +20,6 @@ return new class extends Migration
             ->on('players')
             ->onUpdate('cascade')
             ->onDelete('cascade');
-      
 
         $table->unsignedBigInteger('party_id');
         $table->foreign('party_id')
@@ -29,8 +28,6 @@ return new class extends Migration
             ->onUpdate('cascade')
             ->onDelete('cascade');
 
-            
-           
             $table->timestamps();
         });
     }

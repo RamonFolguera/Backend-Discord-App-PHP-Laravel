@@ -21,10 +21,10 @@ return new class extends Migration
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
 
-            
+            $table->string('name');
+            $table->string('last_name');
             $table->string('username')->nullable(false);
             $table->string('email')->nullable(false);
-            $table->string('steamUsername');
             $table->timestamps();
         });
     }
