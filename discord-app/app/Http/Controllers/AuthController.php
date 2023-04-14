@@ -71,7 +71,7 @@ class AuthController extends Controller
         if ($validator->fails()) {
             return response()->json($validator->errors(), 400);
         }
-        $user = User::query()->where('email', $request['email'])->first();
+        $user = Player::query()->where('email', $request['email'])->first();
         // Validamos si el usuario existe
         if (!$user) {
             return response(

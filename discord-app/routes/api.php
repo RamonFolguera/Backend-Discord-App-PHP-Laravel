@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\PlayerController;
 use Illuminate\Http\Request;
@@ -24,3 +25,7 @@ Route::delete('/players', [PlayerController::class, 'deletePlayer']);
 
 //GAMES
 Route::get('/games', [GameController::class, 'getGames']);
+
+// AUTH
+Route::post('/register', [AuthController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login']);

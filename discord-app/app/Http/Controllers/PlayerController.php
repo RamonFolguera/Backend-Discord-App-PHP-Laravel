@@ -6,23 +6,23 @@ use Illuminate\Http\Request;
 
 class PlayerController extends Controller
 {
-    public function getUsers()
+    public function getPlayers()
     {
-        return "Get all players";
+        return "Received all players";
     }
 
-    public function createUser()
+    public function createPlayer()
     {
-        return "Create player";
+        return "Created player";
     }
 
-    public function updateUser()
+    public function updatePlayer()
     {
-        return "Update player";
+        return "Updated player";
     }
 
-    public function deleteUser()
+    public function deletePlayer()
     {
-        return "Delete player";
+        return "Deleted player";
     }
 }
