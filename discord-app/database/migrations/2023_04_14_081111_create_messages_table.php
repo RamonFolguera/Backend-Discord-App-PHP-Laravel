@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('messages', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('player_id');
-            $table->foreign('player_id')
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')
                 ->references('id')
-                ->on('players')
+                ->on('users')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
           

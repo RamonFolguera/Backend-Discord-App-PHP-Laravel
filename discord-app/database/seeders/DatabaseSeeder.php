@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             RoleSeeder::class,
             GameSeeder::class,
-            PlayerSeeder::class,
+            UserSeeder::class,
             PartySeeder::class,
             MessageSeeder::class,
         ]);

@@ -6,7 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class PlayerSeeder extends Seeder
+class UserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,7 +15,7 @@ class PlayerSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('players')->insert(
+        DB::table('users')->insert(
             [
                 [
                     'name' => "Alex",
@@ -48,6 +48,5 @@ class PlayerSeeder extends Seeder
                 ]
             ]
         );
-
-    }  
+    }
 }

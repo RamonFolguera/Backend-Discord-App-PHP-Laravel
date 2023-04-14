@@ -19,7 +19,7 @@ class RoleSeeder extends Seeder
             [
                 [
                     'id' => 1,
-                    'name' => "player"
+                    'name' => "user"
                 ],
                 [
                     'id' => 2,
