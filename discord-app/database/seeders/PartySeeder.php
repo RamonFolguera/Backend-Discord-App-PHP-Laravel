@@ -15,14 +15,14 @@ class PartySeeder extends Seeder
      */
     public function run()
     {
-        DB::table('players')->insert(
+        DB::table('parties')->insert(
             [
                 ['name' => 'LAN Party'],
                 ['name' => 'Game Night'],
                 ['name' => 'Gaming Convention'],
                 ['name' => 'Esports Tournament'],
                 ['name' => 'Board Game Cafe Night'],
-            ];
+            ]
         );
     }
 }
