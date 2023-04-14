@@ -15,6 +15,14 @@ return new class extends Migration
     {
         Schema::create('parties', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('game_id');
+            $table->foreign('game_id')
+                ->references('id')
+                ->on('games')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+
+            $table->string('name')->nullable(false);
             $table->timestamps();
         });
     }
