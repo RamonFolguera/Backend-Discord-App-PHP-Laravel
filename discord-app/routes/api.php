@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\GameController;
+use App\Http\Controllers\PlayerController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -12,10 +13,14 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', function () {
-    return "Bienvenidos al ultimo lunes";
+    return "Bienvenidos al discord";
 });
 
-Route::get('/users', [UserController::class, 'getUsers']);
-Route::post('/users', [UserController::class, 'createUser']);
-Route::put('/users', [UserController::class, 'updateUser']);
-Route::delete('/users', [UserController::class, 'deleteUser']);
+//PLAYERS
+Route::get('/players', [PlayerController::class, 'getPlayers']);
+Route::post('/players', [PlayerController::class, 'createPlayer']);
+Route::put('/players', [PlayerController::class, 'updatePlayer']);
+Route::delete('/players', [PlayerController::class, 'deletePlayer']);
+
+//GAMES
+Route::get('/games', [GameController::class, 'getGames']);

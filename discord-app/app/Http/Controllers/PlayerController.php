@@ -4,25 +4,25 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class PlayerController extends Controller
 {
     public function getUsers()
     {
-        return "Get all users";
+        return "Get all players";
     }
 
     public function createUser()
     {
-        return "Create user";
+        return "Create player";
     }
 
     public function updateUser()
     {
-        return "Update user";
+        return "Update player";
     }
 
     public function deleteUser()
     {
-        return "Delete user";
+        return "Delete player";
     }
 }

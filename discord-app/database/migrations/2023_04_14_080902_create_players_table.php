@@ -23,8 +23,9 @@ return new class extends Migration
 
             $table->string('name');
             $table->string('last_name');
-            $table->string('username')->nullable(false);
-            $table->string('email')->nullable(false);
+            $table->string('username')->unique()->nullable(false);
+            $table->string('email')->unique()->nullable(false);
+            $table->string('password');
             $table->timestamps();
         });
     }
