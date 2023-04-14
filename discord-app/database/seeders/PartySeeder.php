@@ -17,11 +17,26 @@ class PartySeeder extends Seeder
     {
         DB::table('parties')->insert(
             [
-                ['name' => 'LAN Party'],
-                ['name' => 'Game Night'],
-                ['name' => 'Gaming Convention'],
-                ['name' => 'Esports Tournament'],
-                ['name' => 'Board Game Cafe Night'],
+                [
+                    'game_id' => 5,
+                    'name' => 'LAN Party'
+                ],
+                [
+                    'game_id' => 3,
+                    'name' => 'Game Night'
+                ],
+                [
+                    'game_id' => 1,
+                    'name' => 'Gaming Convention'
+                ],
+                [
+                    'game_id' => 2,
+                    'name' => 'Esports Tournament'
+                ],
+                [
+                    'game_id' => 4,
+                    'name' => 'Board Game Cafe Night'
+                ],
             ]
         );
     }

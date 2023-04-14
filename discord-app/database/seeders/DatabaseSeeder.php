@@ -17,10 +17,10 @@ class DatabaseSeeder extends Seeder
 
 
         $this->call([
-            PlayerSeeder::class,
             RoleSeeder::class,
-            PartySeeder::class,
             GameSeeder::class,
+            PlayerSeeder::class,
+            PartySeeder::class,
             MessageSeeder::class,
         ]);
     }

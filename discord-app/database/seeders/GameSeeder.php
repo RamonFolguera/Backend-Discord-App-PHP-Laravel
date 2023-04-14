@@ -15,7 +15,7 @@ class GameSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('parties')->insert(
+        DB::table('games')->insert(
             [
                 [
                     'title' => 'Super Mario Bros.',
