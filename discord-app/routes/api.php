@@ -7,12 +7,9 @@ use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-
-
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //     return $request->user();
 // });
-
 
 Route::get('/', function () {
     return "Bienvenidos al discord";
@@ -41,7 +38,15 @@ Route::group([
 //PARTIES
 Route::post('/party', [PartyController::class, 'createParty']);
 Route::get('/partiesByGameId/{id}', [PartyController::class, 'getAllPartiesByGameId']);
-Route::post('/party', [PartyController::class, 'createParty']);
-Route::post('/party', [PartyController::class, 'createParty']);
+
+
+Route::group([
+    'middleware' => 'auth:sanctum'
+    ], function () {
+    Route::post('/party/join', [PartyController::class, 'joinParty']);
+    Route::post('/party/leave', [PartyController::class, 'leaveParty']);
+
+});
+
 
 

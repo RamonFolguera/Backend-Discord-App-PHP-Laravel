@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Game;
 use App\Models\Party;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -101,4 +102,78 @@ class PartyController extends Controller
             );
         }
     }
+
+    public function joinParty(Request $request)
+    {
+        try {
+                Log::info("Join Party Working");
+                $partyId = $request->input("party_id");
+                $userId = auth()->user()->id;
+                $user = User::find($userId);
+                $party = Party::find($partyId);
+                $party_userId = $party->users()->find($userId);
+                if ($party_userId && $user) {
+                    return response()->json([
+                        'success' => true,
+                        'message' => "This user is already in the party. Enjoy.",
+                    ]);
+                } else {
+                        $joinParty = DB::table('party_user')->insert(
+                            [
+                                'party_id' => $partyId,
+                                'user_id' => $userId
+                            ]
+                        );
+                    
+                        return response()->json([
+                            "success" => true,
+                            "message" => "You have succesfully joined the Party, enjoy!",
+                            "data" => $joinParty
+                    ], 200);
+                }
+            } catch (\Throwable $th) {
+                Log::error("Join Party error: " . $th->getMessage());
+                return response()->json(
+                    [
+                        "success" => false,
+                        "message" => $th->getMessage() 
+                    ],
+                    500
+        );
+    }
+}
+
+public function leaveParty(Request $request)
+{
+    try {
+        Log::info("Leave Party Working");
+        $partyId = $request->input("party_id");
+        $userId = auth()->user()->id;
+        $user = User::find($userId);
+        
+        $party_userId = DB::table('party_user')->where([
+            ['party_id', '=', $partyId],
+            ['user_id', '=', $userId]
+        ])->value('id');
+        
+        if ($party_userId && $user) {
+            DB::table('party_user')->where('id','=', $party_userId)->delete();
+            return response()->json([
+                'success' => true,
+                'message' => "This user has successfully left the party. Enjoy.",
+            ]);
+        } else {
+            return response()->json([
+                "success" => false,
+                "message" => "Something went wrong",
+            ], 200);
+        }
+    } catch (\Throwable $th) {
+        Log::error("Leave Party error: " . $th->getMessage());
+        return response()->json([
+            "success" => false,
+            "message" => $th->getMessage() 
+        ], 500);
+    }
+}
 }
