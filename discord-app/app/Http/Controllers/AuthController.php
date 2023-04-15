@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
@@ -105,6 +106,7 @@ class AuthController extends Controller
         );
     }
     }
+
     public function logout(Request $request)
 {  try {
     $accessToken = $request->bearerToken();
@@ -132,8 +134,36 @@ class AuthController extends Controller
     );
 }
 }
+
+
+    public function myProfile()
+    {
+        try {
+        $userId = auth()->user()->id;
+        $profile = DB::table('users')->where('id', '=', $userId)->get();
+
+        return response(
+            [
+                "success" => true,
+                "message" => "Your profile has been succesfully retrieved.",
+                "data" => $profile
+            ],
+            Response::HTTP_OK
+        );
+    }   catch (\Throwable $th) {
+    Log::error("Logout error: " . $th->getMessage());
+
+    return response()->json(
+        [
+            "success" => false,
+            "message" => "Profile error"
+        ],
+        Response::HTTP_INTERNAL_SERVER_ERROR
+    );
+}
 }
 
+}
 
 
 
