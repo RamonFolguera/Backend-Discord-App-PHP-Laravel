@@ -31,10 +31,17 @@ Route::get('/games', [GameController::class, 'getGames']);
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 
+Route::group([
+    'middleware' => 'auth:sanctum'
+    ], function () {
+    Route::post('/logout', [AuthController::class, 'logout']);
+    Route::get('/my-profile', [AuthController::class, 'myProfile']);
+});
 
-
-
-//PARTY
+//PARTIES
+Route::post('/party', [PartyController::class, 'createParty']);
+Route::get('/partiesByGameId/{id}', [PartyController::class, 'getAllPartiesByGameId']);
+Route::post('/party', [PartyController::class, 'createParty']);
 Route::post('/party', [PartyController::class, 'createParty']);
 
 

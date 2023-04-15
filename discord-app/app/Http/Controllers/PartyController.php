@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Game;
 use App\Models\Party;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 
@@ -45,6 +47,55 @@ class PartyController extends Controller
                 [
                     "success" => false,
                     "message" => "error creating party",
+                ],
+                500
+            );
+        }
+    }
+
+    public function getAllPartiesByGameId(Request $request, $id)
+    {
+        try {
+            Log::info("Get Party By GameId");
+            $game = Game::find($id);
+            
+            if (!$game) {
+                return response()->json(
+                    [
+                        "success" => false,
+                        "message" => "Game not found",
+                    ],
+                    404
+                );
+            }
+
+            $gameId = $game->id;
+            $parties = DB::table('parties')->where('game_id', '=', $gameId)->get();
+    
+            if ($parties->isEmpty()) {
+                return response()->json(
+                    [
+                        "success" => false,
+                        "message" => "No parties found for this game",
+                    ],
+                    404
+                );
+            }
+
+            return response()->json(
+                [
+                    "success" => true,
+                    "message" => "Here are the parties playing the selected game",
+                    "data" => $parties
+                ],
+                200
+            );
+        } catch (\Throwable $th) {
+            Log::error("CREATING PARTY: " . $th->getMessage());
+            return response()->json(
+                [
+                    "success" => false,
+                    "message" => "error getting parties",
                 ],
                 500
             );
