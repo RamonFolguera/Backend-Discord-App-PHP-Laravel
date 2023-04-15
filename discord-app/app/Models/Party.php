@@ -22,6 +22,6 @@ class Party extends Model
      
     public function games()
     {
-        return $this->hasOne(Game::class);
+        return $this->belongsTo(Game::class);
     }
 }
