@@ -19,16 +19,16 @@ class RoleSeeder extends Seeder
             [
                 [
                     'id' => 1,
-                    'name' => "user"
+                    'name' => "user",
+                    'created_at' => '2023-04-16 08:53:22',
+                    'updated_at' => '2023-04-16 08:53:22'
                 ],
                 [
                     'id' => 2,
-                    'name' => "admin"
+                    'name' => "admin",
+                    'created_at' => '2023-04-16 08:53:22',
+                    'updated_at' => '2023-04-16 08:53:22'
                 ],
-                [
-                    'id' => 3,
-                    'name' => "super_admin"
-                ]
             ]
         );
 

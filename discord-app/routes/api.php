@@ -22,6 +22,11 @@ Route::post('/users', [UserController::class, 'createUser']);
 Route::put('/users', [UserController::class, 'updateUser']);
 Route::delete('/users', [UserController::class, 'deleteUser']);
 
+//Example getting all users as admin
+Route::group(['middleware' => ['auth:sanctum', 'isAdmin']], function () {
+    Route::get('/users/all', [UserController::class, 'getAllUsersByAdmin']);
+});
+
 //GAMES
 Route::get('/games', [GameController::class, 'getGames']);
 

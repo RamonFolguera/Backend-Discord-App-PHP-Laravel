@@ -18,33 +18,56 @@ class UserSeeder extends Seeder
         DB::table('users')->insert(
             [
                 [
+                    'role_id' => 2,
                     'name' => "Alex",
                     'last_name' => "Moya",
                     'username' => 'CaptainMoya',
                     'email' => 'alex@alex.com',
-                    'password' => 'password456'
+                    'password' => bcrypt("123456"),
+                    'created_at' => '2023-04-16 08:53:22',
+                    'updated_at' => '2023-04-16 08:53:22'
+                    
                 ],
                 [
+                    'role_id' => 1,
                     'name' => "Laura",
                     'last_name' => "Sanchez",
                     'username' => 'WonderWoman',
                     'email' => 'laura@laura.com',
-                    'password' => 'password789'
+                    'password' => bcrypt("123456"),
+                    'created_at' => '2023-04-16 08:53:22',
+                    'updated_at' => '2023-04-16 08:53:22'
                 ],
                 [
+                    'role_id' => 1,
                     'name' => "Ramón",
                     'last_name' => "Folguera",
                     'username' => 'brannell',
                     'email' => 'ramon@ramon.com',
-                    'password' => 'password321'
+                    'password' => bcrypt("123456"),
+                    'created_at' => '2023-04-16 08:53:22',
+                    'updated_at' => '2023-04-16 08:53:22'
 
                 ],
                 [
-                    'name' => "Test",
-                    'last_name' => "User",
-                    'username' => 'testuser',
-                    'email' => 'test@test.com',
-                    'password' => 'password123'
+                    'role_id' => 1,
+                    'name' => "James",
+                    'last_name' => "Webb",
+                    'username' => 'WebbAthor',
+                    'email' => 'james@james.com',
+                    'password' => bcrypt("123456"),
+                    'created_at' => '2023-04-16 08:53:22',
+                    'updated_at' => '2023-04-16 08:53:22'
+                ],
+                [
+                    'role_id' => 1,
+                    'name' => "Peter",
+                    'last_name' => "Smith",
+                    'username' => 'Tank',
+                    'email' => 'peter@peter.com',
+                    'password' => bcrypt("123456"),
+                    'created_at' => '2023-04-16 08:53:22',
+                    'updated_at' => '2023-04-16 08:53:22'
                 ]
             ]
         );

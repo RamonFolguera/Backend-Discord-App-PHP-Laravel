@@ -1,14 +1,45 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Log;
+
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
-    public function getUsers()
+    public function getAllUsersByAdmin(Request $request)
     {
-        return "Received all users";
+        try {
+            Log::info("Get All Users By Admin working");
+
+            $userId = auth()->user()->id;
+        
+            $userAdmin = DB::table('users')->where('role_id', '=', 2)->first();
+            $userAdminId = $userAdmin->id;
+
+            if($userAdminId === $userId) {
+                $users = DB::table('users')->get();
+            }
+            return response()->json(
+                [
+                    "success" => true,
+                    "message" => "Here are the parties playing the selected game",
+                    "data" => $users
+                ],
+                200
+            );
+        } catch (\Throwable $th) {
+            Log::error("CREATING PARTY: " . $th->getMessage());
+            return response()->json(
+                [
+                    "success" => false,
+                    "message" => "error getting users" 
+                ],
+                500
+            );
+        }
     }
 
     public function createUser()

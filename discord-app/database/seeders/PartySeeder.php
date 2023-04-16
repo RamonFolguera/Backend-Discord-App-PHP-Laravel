@@ -19,23 +19,33 @@ class PartySeeder extends Seeder
             [
                 [
                     'game_id' => 5,
-                    'name' => 'LAN Party'
+                    'name' => 'LAN Party',
+                    'created_at' => '2023-04-16 08:53:22',
+                    'updated_at' => '2023-04-16 08:53:22'
                 ],
                 [
                     'game_id' => 3,
-                    'name' => 'Game Night'
+                    'name' => 'Game Night',
+                    'created_at' => '2023-04-16 08:53:22',
+                    'updated_at' => '2023-04-16 08:53:22'
                 ],
                 [
                     'game_id' => 1,
-                    'name' => 'Gaming Convention'
+                    'name' => 'Gaming Convention',
+                    'created_at' => '2023-04-16 08:53:22',
+                    'updated_at' => '2023-04-16 08:53:22'
                 ],
                 [
                     'game_id' => 2,
-                    'name' => 'Esports Tournament'
+                    'name' => 'Esports Tournament',
+                    'created_at' => '2023-04-16 08:53:22',
+                    'updated_at' => '2023-04-16 08:53:22'
                 ],
                 [
                     'game_id' => 4,
-                    'name' => 'Board Game Cafe Night'
+                    'name' => 'Board Game Cafe Night',
+                    'created_at' => '2023-04-16 08:53:22',
+                    'updated_at' => '2023-04-16 08:53:22'
                 ],
             ]
         );
