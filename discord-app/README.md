@@ -1,7 +1,6 @@
-# Project 6 - Backend for a Gaming-Basic-Discord with Laravel
-Prueba sync
+# Project 6 - Backend for a Gaming-Discord-Based with Laravel
 <details>
-  <summary>Contenido 📝</summary>
+  <summary>Summary 📝</summary>
   <ol>
     <li><a href="#objetivo">Goal</a></li>
     <li><a href="#sobre-el-proyecto">About</a></li>
@@ -11,7 +10,6 @@ Prueba sync
     <li><a href="#work-flow">Work-flow</a></li>
     <li><a href="#endpoints">Endpoints</a></li>
     <li><a href="#futuras-funcionalidades">Future funtionalities</a></li>
-    <li><a href="#contribuciones">Contributions</a></li>
     <li><a href="#licencia">Licence</a></li>
     <li><a href="#webgrafia">webography</a></li>
     <li><a href="#desarrollo">Development</a></li>
@@ -19,441 +17,875 @@ Prueba sync
   </ol>
 </details>
 
-## Objetivo
-In this project from our Full Stack Bootcamp with Geekshubs we are asked to show our knowledge adquired during our lessons about PHP + Laravel. We have to create a complete Backend structure (DDBB+PHP+Laravel) that .
+## Goal
+In this project from our Full Stack Bootcamp with Geekshubs we are asked to show our knowledge adquired during our lessons about PHP + Laravel. We have to create a complete Backend structure (DDBB+PHP+Laravel) that meets the requirements described below. 
 
-## Sobre el proyecto
-Para este proyecto en el bootcamp de GeeksHubs se nos entrega el siguiente enunciado:
-"Desde el departamento de producto nos piden crear el backend correspondiente al sistema de gestión de citas para una Clínica Dental.
+## About
+Our client asks for a platform where all their employees working remotely can use as a space to meet up and stay in contact, allowing them to interact creating different groups based on their interests.
 
-Para ello el cliente deberá ser capaz de registrarse en la aplicación, hacer login y acceder a su área de cliente. En su área de cliente deberá poder ver una lista de las citas que tiene a futuro, crear citas, modificarlas y anularlas. También existirá una zona de usuario con sus datos personales, que solo podrá ver él mismo. Además, los dentistas deberán poder registrarse como profesionales, hacer
-login y ver todas las citas y clientes registrados." 
-
-Se valorará la ejecución técnica, así como el trabajo en equipo. Siendo un equipo de dos miembros ha sido importante la comunicación, el apoyo mutuo, la toma de decisiones consensuadas y por supuesto, el manejo de Git y el repositorio de Github: creación de ramas de trabajo, resolución de conflictos, trabajo individual en local ... 
+First stage for the project would be to create a web application LFG that allows employees to contact their colleagues and form groups to play a videogame, to get them to share relax afterwork times.
 
 ## Stack
-Tecnologías utilizadas:
+Used technologies:
 
 <div align="center">
 
-<a href="https://www.expressjs.com/">
-    <img src= "https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB"/>
+<a href="https://php.net/">
+    <img src= "https://img.shields.io/badge/php-8993be?style=for-the-badge&logo=php&logoColor=white"/>
 </a>
-<a href="https://nodejs.org/es/">
-    <img src= "https://img.shields.io/badge/node.js-026E00?style=for-the-badge&logo=node.js&logoColor=white"/>
-</a>
-<a href="https://developer.mozilla.org/es/docs/Web/JavaScript">
-    <img src= "https://img.shields.io/badge/javascipt-EFD81D?style=for-the-badge&logo=javascript&logoColor=black"/>
-</a>
-<a href="https://www.sequelize.org/">
-    <img src= "https://img.shields.io/badge/sequelize-3C76C3?style=for-the-badge&logo=sequelize&logoColor=white"/>
+<a href="https://laravel.com/">
+    <img src= "https://img.shields.io/badge/laravel-FF0000?style=for-the-badge&logo=laravel&logoColor=white"/>
 </a>
 <a href="https://www.mysql.com/">
     <img src= "https://img.shields.io/badge/mysql-3E6E93?style=for-the-badge&logo=mysql&logoColor=white"/>
 </a>
 <a href="https://git-scm.com/">
-    <img src= "https://img.shields.io/badge/git-F54D27?style=for-the-badge&logo=git&logoColor=white"/>
+    <img src= "https://img.shields.io/badge/git-f34f29?style=for-the-badge&logo=git&logoColor=white"/>
+</a>
+<a href="https://www.docker.com/">
+    <img src= "https://img.shields.io/badge/docker-2496ED?style=for-the-badge&logo=docker&logoColor=white"/>
 </a>
 <a href=" https://www.postman.com/">
     <img src= "https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white"/>
 </a>
-<a href=" https://jwt.io/">
-    <img src= "https://img.shields.io/badge/JWT-black?style=for-the-badge&logo=JSON%20web%20tokens"/>
-</a>
 
-<a href="https://www.docker.com/">
-    <img src= "https://img.shields.io/badge/docker-2496ED?style=for-the-badge&logo=docker&logoColor=white"/>
-</a>
  </div>
 
 
-## Diagrama BD
-!['imagen-db'](./img/db.JPG)
+## DDBB diagram
+!['ddbb'](./img/ddbb.JPG)
 
-## Instalación en local
+## Local installation
 
-1. Clonar el repositorio
-2. ` $ npm install `
-3. Conectamos nuestro repositorio con la base de datos 
-4. ``` $ Ejecutamos las migraciones ``` 
-5. ``` $ Ejecutamos los seeders ``` 
-6. ``` $ npm run dev ``` 
-7. ...
-
-## Workflow
+1. Clone the repository in a terminal in your computer:
+https://github.com/RamonFolguera/rfc-geekshubs-fsd-val-project6-16042023.git
+2. ` $ composer install ` To install all dependencies needed.
+3. Connect my repo with the database with .env file. You just have to rename the file .env.example to .env and change the configuration to match your Docker one.
+4. ``` $ php artisan migrate ``` To execute migrations.
+5. ``` $ php artisan db:seed ``` To execute seeders.
+5. ``` $ php artisan migrate:fresh --seed ``` In case you need to drop data base and create, excute migrations and seeders again.
+6. ``` $ php artisan serve ``` 
+7. Ready to test the endpoints in Postman. Here you have my Collection in JSON format:
 <details>
-<summary>Workflow</summary>
-
-1. Crear package.json con npm init -y.
-2. Crear archivo index.js en la ruta principal. Crear .env y .env.example. Crear .gitignore con /node_modules y .env dentro. Ejecutar comando git init. 
-3. Instalar express, nodemon, sequelize, sequelize-cli, mysql2, dotenv, jsonwebtoken y bcrypt. 
-4. Sequelize init. Ejecutar sequelize.
-5. Crear script "dev": "nodemon index.js", para mantener el servidor ejecutándose.
-6. ``` $ npm run dev ``` comando para ejecutar el servidor. ctrl + c para pararlo.
-7. Required express en index.js, y la variable instance app. También asignar PORT a nuestro servidor y usar un método listen para ejecutarlo:
-```
-const express = require('express');
-const app = express();
-const PORT = 3000;
-app.listen(PORT, () => console.log("Server running on port: " + PORT));
-```
-8. Crear models Role, Doctor, User, Service and Appointment en ese orden:
-```
-npx sequelize-cli model:generate --name Users --attributes name:string,...
-``` 
-9. Añadir las foreign keys de services, doctors y users en appointments migration js file con sus respectivas relaciones. Hacer lo mismo con las que correspondan en todos los modelos.
-```
-references: {
-          model: "Services",
-          key:"id"
-        }
-```
-10. Crear carpetas controllers y view.
-En carpeta view crear las Routes.
-
-11. Crear router.js en la ruta principal:
-```
-const router = require('express').Router();
-module.exports = router;
-```
-12. Route.js conectado al index principal: 
-```
-const router = require('./router'); 
-app.use(router);
-```
-13. Refactorizar a route:
-```
-const router = require('express').Router();
-
-router.use('/services', servicesRouter);
-router.use('/users', usersRouter)
-
-module.exports = router;
-```
-14. Refactorizar controllers:
-```
-const serviceController = {};
-
-serviceController.getServices = (req, res) => {return res.send('Get Services')}
-serviceController.createServices = (req, res) => {return res.send('Create Services')}
-
-module.exports = serviceController;
-```
-15. Crear seeders para Role, User, Doctor, Service, Appointment y  commit a la database
-```
-npx sequelize-cli seed:generate --name demo-user
-npx sequelize-cli db:seed:all
-```
-16. Crear middlewares para controlar el nivel de acceso a la información o a las funcionalidades de la base de datos según roles.
-16. Crear endpoints, los cuales describimos a continuación:
+<summary>Project 6 - Laravel will be exported as a JSON file 📝</summary>
+{
+	"info": {
+		"_postman_id": "e9501af7-cd90-4194-b5b7-aaba70da1431",
+		"name": "Project 6 - Laravel",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Get my profile",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "8|029TWlGt2bxZJNUX9Jj775DKsBg1aVua7q1o38ci",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/my-profile/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"my-profile",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update my profile",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "8|029TWlGt2bxZJNUX9Jj775DKsBg1aVua7q1o38ci",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/my-profile/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"my-profile",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All users by Admin",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/api/register/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"register",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Peter\",\r\n    \"last_name\": \"Roger\",\r\n    \"username\": \"nickname\",\r\n    \"email\": \"peter@peter.com\",\r\n    \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/register/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"register",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"alex@alex.com\",\r\n    \"password\": \"password456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/login/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"login",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"alex@alex.com\",\r\n    \"password\": \"password456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/login/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"login",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Parties",
+			"item": [
+				{
+					"name": "Create Party",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"game_id\": 1,\r\n    \"name\": \"RamonParty\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/party/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"party",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all parties playing a Game",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/partiesByGameId/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"partiesByGameId",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Join a Party",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "11|flpY4uplQV3wOxlzUezMCfSiMJoT3eWbZVuW7YYT",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"party_id\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/party/join",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"party",
+								"join"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Leave a Party",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "11|flpY4uplQV3wOxlzUezMCfSiMJoT3eWbZVuW7YYT",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"party_id\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/party/join",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"party",
+								"join"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Messages",
+			"item": [
+				{
+					"name": "GetAllMessagesByPartyId",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "2|IP9D1KYxSPaZVLyzaAgScbcLXk75j4FiOKlMBKir",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "localhost:8000/api/messages/party/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"messages",
+								"party",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Message",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"party_id\": 1,\r\n    \"message\": \"What's up guys?\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/messages/new",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"messages",
+								"new"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Message",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "2|IP9D1KYxSPaZVLyzaAgScbcLXk75j4FiOKlMBKir",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"message\": \"que pasa cara pasa\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/messages/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"messages",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Message",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "2|IP9D1KYxSPaZVLyzaAgScbcLXk75j4FiOKlMBKir",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"message\": \"how are you guys?\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/messages/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"messages",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
 </details>
+
+Copy that JSON and paste it in here:
+!['importJSONpostman'](./img/importJSONpostman.JPG)
+image.png
 
 ## Endpoints
 <details>
 <summary>Endpoints</summary>
 
 - AUTH
-    - REGISTRO DE USUARIOS
+    - USERS REGISTER
 
-            POST http://localhost:3000/auth/register/
+            POST http://localhost:8000/api/register/
         body:
         ``` js
             
           {
-            "name":"Ramón",
-            "first_surname":"Folguera",
-            "second_surname":"Carbonell",
-            "phone": "666666666",
-            "address":"Abbey Road 1",
-            "email": "ramon@ramon.com",
-            "password": "mipassword123"
+            "name": "James",
+            "last_name": "Webb",
+            "username": "RockyRock",
+            "email": "james@james.com",
+            "password": "999999"
           }
         ```
 
-    - LOGIN DE USUARIOS
+    - USERS LOGIN
 
-            POST http://localhost:3000/auth/login/  
+            POST http://localhost:8000/api/login/  
         body:
         ``` js
-            {
-                "email": "ramon@ramon.com",
-                "password": "mipassword123"
-            }
+        {
+            "email": "alex@alex.com",
+            "password": "123456"
+        }
         ```
+
+    - USERS LOGOUT
+
+            POST http://localhost:8000/api/logout/  
+
 - USER
-    - PERFIL DE USUARIO 
+    - USER PROFILE 
 
-        Copia el TOKEN generado por el AUTH del LOGIN:
+        Copy the generated TOKEN generado with authenticate from LOGIN:
 
 
         ```
-            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsImVtYWlsIjoiYW1wYXJvQGFtcGFyby5jb20iLCJyb2xlSWQiOjMsImlhdCI6MTY3ODAwNzMzNSwiZXhwIjoxNjc4MDE0NTM1fQ.4K6BNC2bhhrW_vyCQh7hiWI2-i-c4C-KOOgo0nHeQOg"
+            "1|GmWPYpZbnEKrKpqHPh6Z2oFxl14oQxMaPKpJexYX"
         ```
 
-        En AUTHORIZATION. Type BEARER TOKEN. Pega el TOKEN generado.
+        In AUTHORIZATION. Type BEARER TOKEN. Paste the generated TOKEN.
 
-            GET http://localhost:3000/users/me
+            GET http://localhost:8000/api/my-profile/
 
         
 
-    - MODIFICACIÓN DE DATOS DE PERFIL
+    - USER PROFILE DETAILS UPDATE 
 
-        Copia el TOKEN generado por el AUTH del LOGIN:
+        Copy the generated TOKEN generado with authenticate from LOGIN:
 
         ```
-            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsImVtYWlsIjoiYW1wYXJvQGFtcGFyby5jb20iLCJyb2xlSWQiOjMsImlhdCI6MTY3ODAwNzMzNSwiZXhwIjoxNjc4MDE0NTM1fQ.4K6BNC2bhhrW_vyCQh7hiWI2-i-c4C-KOOgo0nHeQOg"
+            "1|GmWPYpZbnEKrKpqHPh6Z2oFxl14oQxMaPKpJexYX"
         ```
 
-        En AUTHORIZATION. Type BEARER TOKEN. Pega el TOKEN generado.
+        In AUTHORIZATION. Type BEARER TOKEN. Paste the generated TOKEN.
 
-            PUT http://localhost:3000/users/me
+            PUT http://localhost:8000/api/my-profile/update
         body:
         ``` js
             {
-                "attribute":"name",
-                "value":"Rodrigo",
-                "changes":{
-                    "name": "Francisco",
-                    "first_surname": "Martínez"
-                    }
+            "name": "Alex updated",
+            "last_name": "Moya updated",
+            "username": "updated",
+            "email": "alex@gmailupdated.com",
+            "password": "123456"
             }
         ```
 
-    - VER TODAS LOS CLIENTES REGISTRADOS (COMO DENTISTA)
+    - GET ALL REGISTERED USERS AS ADMIN
 
-        LOGIN con USER con role de DOCTOR:
+        LOGIN as USER with ADMIN role:
 
         body:
         ``` js
             {
-              "email":"amparo@amparo.com",
-              "password": "456789"
+                "email": "alex@alex.com",
+                "password": "123456"
             }
         ```
 
-        Copia el TOKEN generado por el AUTH del LOGIN:
+        Copy the generated TOKEN generado with authenticate from LOGIN:
+
 
         ```
-            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsImVtYWlsIjoiYW1wYXJvQGFtcGFyby5jb20iLCJyb2xlSWQiOjMsImlhdCI6MTY3ODAwNzMzNSwiZXhwIjoxNjc4MDE0NTM1fQ.4K6BNC2bhhrW_vyCQh7hiWI2-i-c4C-KOOgo0nHeQOg"
+            "1|GmWPYpZbnEKrKpqHPh6Z2oFxl14oQxMaPKpJexYX"
         ```
 
-        En AUTHORIZATION. Type BEARER TOKEN. Pega el TOKEN generado.
+        In AUTHORIZATION. Type BEARER TOKEN. Paste the generated TOKEN.
 
-        GET  http://localhost:3000/users
-- APPOINTMENT
-    - CREACIÓN DE CITAS
+            GET  http://localhost:8000/api/users/all
 
-            POST http://localhost:3000/appointments/
+- PARTY
+    - CREATE PARTIES
+
+            POST http://localhost:8000/api/party/
         body:
         ``` js
             {
-                "date": "2023-03-01 00:00:00",
-                "service_id": 1,
-                "doctor_id":1
+                "game_id": 4,
+                "name": "NewParty"
             }
         ```
 
-        El cliente crea una cita en estado Pendiente de Verificar por el doctor.
+    - GET ALL PARTIES PLAYING A SPECIFIC GAME
 
-    - MODIFICACIÓN DE CITAS
+        Adding id from the selected game by params (/id).
 
-        Copia el TOKEN generado por el AUTH del LOGIN:
+            GET http://localhost:8000/api/partiesByGameId/2
+
+    - JOIN A PARTY
+
+        Copy the generated TOKEN generado with authenticate from LOGIN:
 
         ```
-            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsImVtYWlsIjoiYW1wYXJvQGFtcGFyby5jb20iLCJyb2xlSWQiOjMsImlhdCI6MTY3ODAwNzMzNSwiZXhwIjoxNjc4MDE0NTM1fQ.4K6BNC2bhhrW_vyCQh7hiWI2-i-c4C-KOOgo0nHeQOg"
+            "1|GmWPYpZbnEKrKpqHPh6Z2oFxl14oQxMaPKpJexYX"
         ```
 
-        En AUTHORIZATION. Type BEARER TOKEN. Pega el TOKEN generado.
+        In AUTHORIZATION. Type BEARER TOKEN. Paste the generated TOKEN.
 
-            PUT http://localhost:3000/appointments
+
+            POST http://localhost:8000/api/party/join
         body:
         ``` js
             {
-                "id":"7",
-                "changes":{
-                    "service_id":2
-                }
+                "party_id": 4
             }
         ```
 
-    - ANULACIÓN DE CITAS 
+    - LEAVE A PARTY
 
-        Copia el TOKEN generado por el AUTH del LOGIN:
+        Copy the generated TOKEN generado with authenticate from LOGIN:
 
         ```
-            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsImVtYWlsIjoiYW1wYXJvQGFtcGFyby5jb20iLCJyb2xlSWQiOjMsImlhdCI6MTY3ODAwNzMzNSwiZXhwIjoxNjc4MDE0NTM1fQ.4K6BNC2bhhrW_vyCQh7hiWI2-i-c4C-KOOgo0nHeQOg"
+            "1|GmWPYpZbnEKrKpqHPh6Z2oFxl14oQxMaPKpJexYX"
         ```
 
-        En AUTHORIZATION. Type BEARER TOKEN. Pega el TOKEN generado.
+        In AUTHORIZATION. Type BEARER TOKEN. Paste the generated TOKEN.
 
-            DELETE http://localhost:3000/appointments
+
+            POST http://localhost:8000/api/party/leave
         body:
         ``` js
             {
-                "id":"7"
+                "party_id": 4
             }
         ```
-
-    - VER TODAS LAS CITAS QUE TENGO COMO CLIENTE (SOLO LAS PROPIAS) 
-
-        Copia el TOKEN generado por el AUTH del LOGIN:
-
-        ```
-            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsImVtYWlsIjoiYW1wYXJvQGFtcGFyby5jb20iLCJyb2xlSWQiOjMsImlhdCI6MTY3ODAwNzMzNSwiZXhwIjoxNjc4MDE0NTM1fQ.4K6BNC2bhhrW_vyCQh7hiWI2-i-c4C-KOOgo0nHeQOg"
-        ```
-
-        En AUTHORIZATION. Type BEARER TOKEN. Pega el TOKEN generado.
-
-            GET http://localhost:3000/appointments/user
     
-    - VER TODAS LAS CITAS EXISTENTES (COMO DENTISTA) 
+- MESSAGES
+    - GET ALL MESSAGES IN A PARTY
 
-        LOGIN con USER con role de DOCTOR:
+        Copy the generated TOKEN generado with authenticate from LOGIN:
 
+        ```
+            "1|GmWPYpZbnEKrKpqHPh6Z2oFxl14oQxMaPKpJexYX"
+        ```
+
+        In AUTHORIZATION. Type BEARER TOKEN. Paste the generated TOKEN.
+
+        Adding id from the selected party by params (/id).
+
+            GET  http://localhost:8000/api/messages/party/1
+
+
+    - CREATE NEW MESSAGES
+
+        Copy the generated TOKEN generado with authenticate from LOGIN:
+
+        ```
+            "1|GmWPYpZbnEKrKpqHPh6Z2oFxl14oQxMaPKpJexYX"
+        ```
+
+        In AUTHORIZATION. Type BEARER TOKEN. Paste the generated TOKEN.
+
+
+            POST http://localhost:8000/api/messages/new
         body:
         ``` js
             {
-              "email":"amparo@amparo.com",
-              "password": "456789"
+                "party_id": 1,
+                 "message": "Whats up guys?"
             }
         ```
 
-        Copia el TOKEN generado por el AUTH del LOGIN:
+- UPDATE MESSAGES
+
+        Copy the generated TOKEN generado with authenticate from LOGIN:
 
         ```
-            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsImVtYWlsIjoiYW1wYXJvQGFtcGFyby5jb20iLCJyb2xlSWQiOjMsImlhdCI6MTY3ODAwNzMzNSwiZXhwIjoxNjc4MDE0NTM1fQ.4K6BNC2bhhrW_vyCQh7hiWI2-i-c4C-KOOgo0nHeQOg"
+            "1|GmWPYpZbnEKrKpqHPh6Z2oFxl14oQxMaPKpJexYX"
         ```
 
-        En AUTHORIZATION. Type BEARER TOKEN. Pega el TOKEN generado.
+        In AUTHORIZATION. Type BEARER TOKEN. Paste the generated TOKEN.
 
-            GET  http://localhost:3000/appointments/doctor
+        Adding id from the selected message by params (/id)
 
-
-    - COMO MÉDICO, PODER VER SOLO MIS CITAS
-
-        LOGIN con USER con role de DOCTOR:
-
+            PUT http://localhost:8000/api/messages/1
         body:
-        ``` js
+       ``` js
             {
-              "email":"amparo@amparo.com",
-              "password": "456789"
+                "message": "Whats up guys?"
             }
-        ```
+        ```      
 
-        Copia el TOKEN generado por el AUTH del LOGIN:
+- DELETE MESSAGES
 
-        ```
-            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsImVtYWlsIjoiYW1wYXJvQGFtcGFyby5jb20iLCJyb2xlSWQiOjMsImlhdCI6MTY3ODAwNzMzNSwiZXhwIjoxNjc4MDE0NTM1fQ.4K6BNC2bhhrW_vyCQh7hiWI2-i-c4C-KOOgo0nHeQOg"
-        ```
-
-        En AUTHORIZATION. Type BEARER TOKEN. Pega el TOKEN generado.
-
-            GET  http://localhost:3000/appointments/doctor/my
-
-    - CONSULTAR CITAS DE UN DOCTOR SIN VERIFICAR
-
-        LOGIN con USER con role de DOCTOR:
-
-        body:
-        ``` js
-            {
-              "email":"amparo@amparo.com",
-              "password": "456789"
-            }
-        ```
-
-        Copia el TOKEN generado por el AUTH del LOGIN:
+        Copy the generated TOKEN generado with authenticate from LOGIN:
 
         ```
-            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsImVtYWlsIjoiYW1wYXJvQGFtcGFyby5jb20iLCJyb2xlSWQiOjMsImlhdCI6MTY3ODAwNzMzNSwiZXhwIjoxNjc4MDE0NTM1fQ.4K6BNC2bhhrW_vyCQh7hiWI2-i-c4C-KOOgo0nHeQOg"
+            "1|GmWPYpZbnEKrKpqHPh6Z2oFxl14oQxMaPKpJexYX"
         ```
 
-        En AUTHORIZATION. Type BEARER TOKEN. Pega el TOKEN generado.
+        In AUTHORIZATION. Type BEARER TOKEN. Paste the generated TOKEN.
 
-            GET  http://localhost:3000/appointments/doctor/my-verified
+        Adding id from the selected message by params (/id)
 
-    - VERIFICAR CITA COMO DOCTOR
-
-        LOGIN con USER con role de DOCTOR:
-
-        body:
-        ``` js
-            {
-              "email":"amparo@amparo.com",
-              "password": "456789"
-            }
-        ```
-
-        Copia el TOKEN generado por el AUTH del LOGIN:
-
-        ```
-            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsImVtYWlsIjoiYW1wYXJvQGFtcGFyby5jb20iLCJyb2xlSWQiOjMsImlhdCI6MTY3ODAwNzMzNSwiZXhwIjoxNjc4MDE0NTM1fQ.4K6BNC2bhhrW_vyCQh7hiWI2-i-c4C-KOOgo0nHeQOg"
-        ```
-
-        En AUTHORIZATION. Type BEARER TOKEN. Pega el TOKEN generado.
-
-            PUT  http://localhost:3000/appointments/verify
-
-          body:
-        ``` js
-            {
-              "email":"amparo@amparo.com",
-              "password": "456789"
-            }
-        ```
-        
+            DELETE http://localhost:8000/api/messages/1
+         
 </details>
 
-## Futuras funcionalidades
-[ ] Añadir un rol SuperAdmin que sea el rol del programador con acceso a todo el sistema menos a los datos privados de los pacientes y doctores.
-[ ] Añadir funcionalidades para crear, modificar y eliminar servicios por los doctores.  
-[ ] Añadir funcionalidades para crear, modificar o eliminar roles por el SuperAdmin
-[ ] Especificar que el rol admin será para administración desde recepción con los privilegios necesarios para llevar a cabo su trabajo, como por ejemplo (añadido en el siguiente punto):
-[ ] Añadir funcionalidad para crear, modificar y eliminar doctores.
 
-## Contribuciones
-Las sugerencias y aportaciones son siempre bienvenidas.  
-
-Puedes hacerlo de dos maneras:
-
-1. Abriendo una issue
-2. Crea un fork del repositorio
-    - Crea una nueva rama  
-        ```
-        $ git checkout -b feature/nombreUsuario-mejora
-        ```
-    - Haz un commit con tus cambios 
-        ```
-        $ git commit -m 'feat: mejora X cosa'
-        ```
-    - Haz push a la rama 
-        ```
-        $ git push origin feature/nombreUsuario-mejora
-        ```
-    - Abre una solicitud de Pull Request
 
 ## Licencia
-Este proyecto se encuentra bajo licencia de [MIT License](https://github.com/RamonFolguera/rfc-jaoa-geekshubs-fsd-val-project4-05032023/blob/master/LICENSE).
+This project is under the following license [MIT License](https://github.com/RamonFolguera/rfc-geekshubs-fsd-val-project6-16042023/blob/master/LICENSE).
 
-## Webgrafia:
-Para conseguir mi objetivo hemos recopilado información de:
-- [Sequelize documentation](https://sequelize.org/docs/v6/)
+## Webography:
+To finish this project I have used the following documentation:
+- [Laravel documentation](https://laravel.com/docs/9.x)
 
 
-## Desarrollo:
+## Development:
 
 ``` js
- const developers = "Ramón" + "Jose";
+  console.log("Developed by: " + Ramón Folguera Carbonell);
 ```  
 
-Proyecto realizado por:
+Project made by:
 
 - **Ramón**
 <a href="https://github.com/RamonFolguera" target="_blank"><img src="https://img.shields.io/badge/github-24292F?style=for-the-badge&logo=github&logoColor=white" target="_blank"></a>
-
-- **Jose**  
-<a href="https://github.com/JoseOliver" target="_blank"><img src="https://img.shields.io/badge/github-24292F?style=for-the-badge&logo=github&logoColor=red" target="_blank"></a>
 
 ##Contacto
 - **Ramón**
@@ -461,10 +893,13 @@ Proyecto realizado por:
 <a href="https://www.linkedin.com/in/ram%C3%B3n-folguera-0ab32776/" target="_blank"><img src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white" target="_blank"></a> 
 </p>
 
-- **Jose**
-<a href = "mailto:micorreoelectronico@gmail.com"><img src="https://img.shields.io/badge/Gmail-C6362C?style=for-the-badge&logo=gmail&logoColor=white" target="_blank"></a>
-<a href="https://www.linkedin.com/in/linkedinUser/" target="_blank"><img src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white" target="_blank"></a> 
-</p>
+## Thanks:
+
+I want to thank my GeekHub mentors for all the support they have given us everyday. For this particular project thanks to:
+
+- **Dani**  
+<a href="https://github.com/datata" target="_blank"><img src="https://img.shields.io/badge/github-24292F?style=for-the-badge&logo=github&logoColor=white" target="_blank"></a> 
+
 
 
 
