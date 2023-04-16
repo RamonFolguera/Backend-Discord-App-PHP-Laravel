@@ -136,33 +136,6 @@ class AuthController extends Controller
 }
 
 
-    public function myProfile()
-    {
-        try {
-        $userId = auth()->user()->id;
-        $profile = DB::table('users')->where('id', '=', $userId)->get();
-
-        return response(
-            [
-                "success" => true,
-                "message" => "Your profile has been succesfully retrieved.",
-                "data" => $profile
-            ],
-            Response::HTTP_OK
-        );
-    }   catch (\Throwable $th) {
-    Log::error("Logout error: " . $th->getMessage());
-
-    return response()->json(
-        [
-            "success" => false,
-            "message" => "Profile error"
-        ],
-        Response::HTTP_INTERNAL_SERVER_ERROR
-    );
-}
-}
-
 }
 
 

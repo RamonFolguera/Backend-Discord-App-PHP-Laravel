@@ -17,10 +17,12 @@ Route::get('/', function () {
 });
 
 //USERS
-Route::get('/users', [UserController::class, 'getUsers']);
-Route::post('/users', [UserController::class, 'createUser']);
-Route::put('/users', [UserController::class, 'updateUser']);
-Route::delete('/users', [UserController::class, 'deleteUser']);
+Route::group([
+    'middleware' => 'auth:sanctum'
+    ], function () {
+    Route::get('/my-profile', [UserController::class, 'myProfile']);
+    Route::put('/my-profile/update', [UserController::class, 'updateMyProfile']);
+});
 
 //Example getting all users as admin
 Route::group(['middleware' => ['auth:sanctum', 'isAdmin']], function () {
@@ -38,9 +40,6 @@ Route::group([
     'middleware' => 'auth:sanctum'
     ], function () {
     Route::post('/logout', [AuthController::class, 'logout']);
-    Route::get('/my-profile', [AuthController::class, 'myProfile']);
-    //TODO
-    Route::put('/my-profile', [AuthController::class, 'updateMyProfile']);
 });
 
 //PARTIES
