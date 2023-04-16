@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GameController;
+use App\Http\Controllers\MessageController;
 use App\Http\Controllers\PartyController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
@@ -33,20 +34,32 @@ Route::group([
     ], function () {
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::get('/my-profile', [AuthController::class, 'myProfile']);
+    //TODO
+    Route::put('/my-profile', [AuthController::class, 'updateMyProfile']);
 });
 
 //PARTIES
 Route::post('/party', [PartyController::class, 'createParty']);
 Route::get('/partiesByGameId/{id}', [PartyController::class, 'getAllPartiesByGameId']);
-
-
 Route::group([
     'middleware' => 'auth:sanctum'
     ], function () {
     Route::post('/party/join', [PartyController::class, 'joinParty']);
     Route::post('/party/leave', [PartyController::class, 'leaveParty']);
-
 });
+
+//MESSAGES
+
+Route::group([
+    'middleware' => 'auth:sanctum'
+    ], function () {
+Route::post('/messages/new', [MessageController::class, 'createMessage']);
+Route::put('/messages/{id}', [MessageController::class, 'updateMessageById']);
+Route::delete('/messages/{id}', [MessageController::class, 'deleteMessageById']);
+Route::get('/messages/party/{id}', [MessageController::class, 'getAllMessagesByPartyId']);
+});
+
+
 
 
 

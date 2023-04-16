@@ -30,8 +30,7 @@ return new class extends Migration
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
                 
-            $table->string('message');
-            $table->date('date');
+            $table->longText('message');
             $table->timestamps();
         });
     }

@@ -18,22 +18,34 @@ class MessageSeeder extends Seeder
         DB::table('messages')->insert(
             [
                 [
-                    'user_id' => 1,
-                    'party_id' => 2,
+                    'user_id' => 2,
+                    'party_id' => 4,
                     'message' => 'Hello world!',
-                    'date' => '2022-01-01',
                 ],
                 [
                     'user_id' => 3,
-                    'party_id' => 5,
+                    'party_id' => 4,
                     'message' => 'How are you?',
-                    'date' => '2022-01-02',
                 ],
                 [
                     'user_id' => 2,
                     'party_id' => 4,
                     'message' => 'I am fine, thanks.',
-                    'date' => '2022-01-03',
+                ],
+                [
+                    'user_id' => 1,
+                    'party_id' => 2,
+                    'message' => 'I am playing this game all day today',
+                ],
+                [
+                    'user_id' => 3,
+                    'party_id' => 2,
+                    'message' => 'I will join you for a couple of hours',
+                ],
+                [
+                    'user_id' => 1,
+                    'party_id' => 2,
+                    'message' => 'Great!',
                 ],
             ]
         );
