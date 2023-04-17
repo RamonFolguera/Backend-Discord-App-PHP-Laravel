@@ -53,7 +53,7 @@ Used technologies:
 
 
 ## DDBB diagram
-!['ddbb'](./img/ddbb.JPG)
+!['ddbb'](./discord-app/img/ddbb.JPG)
 
 ## Local installation
 
@@ -639,7 +639,7 @@ https://github.com/RamonFolguera/rfc-geekshubs-fsd-val-project6-16042023.git
 </details>
 
 Copy that JSON and paste it in here:
-!['importJSONpostman'](./img/importJSONpostman.JPG)
+!['importJSONpostman'](./discord-app/img/importJSONpostman.JPG)
 image.png
 
 ## Endpoints
